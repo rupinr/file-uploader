@@ -18,7 +18,7 @@ private const val NOT_EMPTY_MESSAGE = " cannot be empty"
 private const val FEATURE = "FEATURE"
 private const val UPLOAD = "u"
 private const val DOWNLOAD = "d"
-
+private const val BACKUP = "b"
 
 fun main(args: Array<String>) {
 
@@ -40,14 +40,19 @@ fun main(args: Array<String>) {
     val config = DbxRequestConfig.newBuilder(CLIENT_NAME).build()
     val client = DbxClientV2(config, token)
     when (feature) {
-        UPLOAD -> {
-            uploadFile(client, localPath, dropboxPath)
-        }
+        UPLOAD -> uploadFile(client, localPath, dropboxPath)
         DOWNLOAD -> downloadFile(client, localPath, dropboxPath)
+        BACKUP -> backupFile(client, dropboxPath)
         else -> print("Unknown feature")
     }
 }
 
+
+fun backupFile(clientV2: DbxClientV2, dropboxPath: String){
+
+    val metaData= clientV2.files().moveV2(dropboxPath,dropboxPath+System.currentTimeMillis()).metadata
+    print(dropboxPath+ "moved to "+metaData.pathDisplay)
+}
 
 fun uploadFile(clientV2: DbxClientV2, localPath: String, dropBoxPath: String) {
     FileInputStream(localPath).use {
