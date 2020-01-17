@@ -1,5 +1,0 @@
-TOKEN=$0
-LOCAL_PATH=$1
-DROPBOX_PATH=$2
-FEATURE=DOWNLOAD
-java -jar file-uploader-1.0.jar
