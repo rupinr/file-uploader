@@ -1,3 +1,5 @@
+package com.freenow.fileuploader
+
 import com.dropbox.core.DbxRequestConfig
 import com.dropbox.core.v2.DbxClientV2
 import java.io.File
@@ -16,7 +18,7 @@ private const val UPLOAD = "UPLOAD"
 private const val DOWNLOAD = "DOWNLOAD"
 
 
-fun main() {
+fun main(args: Array<String>) {
 
     val token = Objects.requireNonNull(System.getenv(TOKEN), TOKEN + NOT_EMPTY_MESSAGE)
     val localPath = Objects.requireNonNull(System.getenv(LOCAL_PATH), LOCAL_PATH + NOT_EMPTY_MESSAGE)
