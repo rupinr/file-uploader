@@ -9,7 +9,7 @@ import java.io.FileOutputStream
 import java.util.*
 
 
-private const val CLIENT_NAME = "FareScraperApk"
+private const val CLIENT_NAME = "CLI_CLIENT"
 private const val TOKEN_LONG = "token"
 private const val LOCAL_PATH_LONG = "localpath"
 private const val DROPBOX_PATH_LONG = "dropboxpath"
